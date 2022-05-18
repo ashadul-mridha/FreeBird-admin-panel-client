@@ -33,7 +33,7 @@ const AlbumEdit = () => {
         axios.get(`http://localhost:5000/api/album/${id}`)
         .then( res => {
             setFormValues({ ...formValues, name: res.data.data.name, title: res.data.data.title, subTitle: res.data.data.subTitle, desc: res.data.data.desc});
-            setSelectCat(res.data.data.cat_id)
+            setSelectCat(res.data.data.cat_id._id)
             console.log(res.data.data.cat_id);
             setCurrentValue(res.data.data);
             setLoading(false)

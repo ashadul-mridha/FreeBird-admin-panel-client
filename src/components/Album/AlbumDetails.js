@@ -13,6 +13,7 @@ const AlbumDetails = () => {
         axios.get(`http://localhost:5000/api/album/${id}`)
         .then( res => {
             setData(res.data.data)
+            console.log(res.data.data)
             setLoading(false)
         })
     } ,[])
@@ -40,7 +41,7 @@ const AlbumDetails = () => {
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <label htmlFor="category" className="form-label"> Category *</label>
-                                            <input type="text" disabled value={data.cat_id} className="form-control" placeholder="Enter category" />
+                                            <input type="text" disabled value={data.cat_id?.name} className="form-control" placeholder="Enter category" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">

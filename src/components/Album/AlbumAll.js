@@ -85,7 +85,7 @@ function AlbumAll() {
                         <tr key={album._id}>
                           <td>{index+1}</td>
                           <td>{album.name}</td>
-                          <td>{album.cat_id}</td>
+                          <td>{album.cat_id.name}</td>
                           <td>{album.title}</td>
                           <td>{album.subTitle}</td>
                           <td>
