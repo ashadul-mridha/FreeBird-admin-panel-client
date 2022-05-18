@@ -14,6 +14,7 @@ import {
   cilHome,
   cilPlus,
   cilDelete,
+  cilCaretBottom,
   cilBorderAll
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
@@ -50,31 +51,30 @@ const _nav = [
       },
       // {
       //   component: CNavItem,
-      //   name: 'Edit HomePage',
-      //   to: '/homepage/edit',
-      //   icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+      //   name: 'Delete HomePage',
+      //   to: '/homepage/delete',
+      //   icon: <CIcon icon={cilDelete} customClassName="nav-icon" />,
       // },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'Category',
+    // to: '/homepage',
+    icon: <CIcon icon={cilCaretBottom} customClassName="nav-icon" />,
+    items: [
       {
         component: CNavItem,
-        name: 'Delete HomePage',
-        to: '/homepage/delete',
-        icon: <CIcon icon={cilDelete} customClassName="nav-icon" />,
+        name: 'All Category',
+        to: '/category/all',
+        icon: <CIcon icon={cilBorderAll} customClassName="nav-icon" />,
       },
-      // {
-      //   component: CNavItem,
-      //   name: 'Cards',
-      //   to: '/base/cards',
-      // },
-      // {
-      //   component: CNavItem,
-      //   name: 'Carousel',
-      //   to: '/base/carousels',
-      // },
-      // {
-      //   component: CNavItem,
-      //   name: 'Collapse',
-      //   to: '/base/collapses',
-      // },
+      {
+        component: CNavItem,
+        name: 'Add Category',
+        to: '/category/add',
+        icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
+      },
     ],
   },
   {

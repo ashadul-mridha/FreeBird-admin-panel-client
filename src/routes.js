@@ -1,9 +1,12 @@
 import React from 'react'
-import Category from './components/Category/Category'
 import HomePageAdded from './components/HomePage/HomePageAdded'
 import HomePageAll from './components/HomePage/HomePageAll'
 import HomePageEdit from './components/HomePage/HomePageEdit'
 import HomePageDetails from './components/HomePage/HomePageDetails'
+import CategoryAdded from './components/Category/CategoryAdded'
+import CategoryAll from './components/Category/CategoryAll'
+import CategoryEdit from './components/Category/CategoryEdit'
+import CategoryDetails from './components/Category/CategoryDetails'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
@@ -63,7 +66,11 @@ const routes = [
   { path: '/homepage/all', name: 'Homepage All', element: HomePageAll },
   { path: '/homepage/edit/:id', name: 'Homepage Edit', element: HomePageEdit },
   { path: '/homepage/details/:id', name: 'Details Data', element: HomePageDetails },
-  { path: '/category', name: 'category', element: Category },
+  //category route
+  { path: '/category/add', name: 'Category Add', element: CategoryAdded },
+  { path: '/category/all', name: 'Category All', element: CategoryAll },
+  { path: '/category/edit/:id', name: 'Category Edit', element: CategoryEdit },
+  { path: '/category/details/:id', name: 'Details Data', element: CategoryDetails },
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
   { path: '/theme/typography', name: 'Typography', element: Typography },
