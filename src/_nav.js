@@ -60,7 +60,6 @@ const _nav = [
   {
     component: CNavGroup,
     name: 'Category',
-    // to: '/homepage',
     icon: <CIcon icon={cilCaretBottom} customClassName="nav-icon" />,
     items: [
       {
@@ -73,6 +72,25 @@ const _nav = [
         component: CNavItem,
         name: 'Add Category',
         to: '/category/add',
+        icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'Album',
+    icon: <CIcon icon={cilCaretBottom} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'All Album',
+        to: '/album/all',
+        icon: <CIcon icon={cilBorderAll} customClassName="nav-icon" />,
+      },
+      {
+        component: CNavItem,
+        name: 'Add Album',
+        to: '/album/add',
         icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
       },
     ],

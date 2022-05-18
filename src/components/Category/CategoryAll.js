@@ -7,13 +7,16 @@ import { useNavigate } from "react-router-dom";
 function CategoryAll() {
 
   const [data , setData] = useState([]);
+  const [loading , setLoading] = useState(false);
   const [effectDependancy , setEffectDependancy] = useState(false);
   let navigate = useNavigate();
   
   useEffect( () => {
+      setLoading(true)
       axios.get('http://localhost:5000/api/category/all')
       .then( res => {
         setData(res.data.data)
+        setLoading(false);
       })
   } ,[effectDependancy])
 
@@ -55,48 +58,57 @@ function CategoryAll() {
   return (
     <>
       <div className="container">
-        <div className="row">
-          <div className="col">
-            <table className="table table-hover">
-              <thead>
-                <tr>
-                  <th>Sl</th>
-                  <th>Name</th>
-                  <th>Title</th>
-                  <th>SubTitle</th>
-                  <th>Image</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  data.map( (category , index) => (
-                    <tr key={category._id}>
-                      <td>{index+1}</td>
-                      <td>{category.name}</td>
-                      <td>{category.title}</td>
-                      <td>{category.subTitle}</td>
-                      <td>
-                        <img src={`http://localhost:5000/uploads/categoryimg/${category.image}`} alt="" width="50px" height="auto" />
-                      </td>
-                      <td>{category.isActive}</td>
-                      <td>
+        <div className="row justify-content-center">
+          {
+            loading ? (
+              <div className="spinner-border text-warning" role="status">
+                  <span>Loading...</span>
+              </div>
+            ) : (
+              <div className="col">
+                <table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Sl</th>
+                      <th>Name</th>
+                      <th>Title</th>
+                      <th>SubTitle</th>
+                      <th>Image</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      data.map( (category , index) => (
+                        <tr key={category._id}>
+                          <td>{index+1}</td>
+                          <td>{category.name}</td>
+                          <td>{category.title}</td>
+                          <td>{category.subTitle}</td>
+                          <td>
+                            <img src={`http://localhost:5000/uploads/categoryimg/${category.image}`} alt="" width="50px" height="auto" />
+                          </td>
+                          <td>{category.isActive}</td>
+                          <td>
 
-                          <i title='Details View' onClick={ () => navigate(`/category/details/${category._id}`)} className="fa-solid fa-eye text-success fa-lg"></i>
-                        
-                          <i title='updated' onClick={ () => navigate(`/category/edit/${category._id}`)} className="fa-solid fa-file-pen text-warning fa-lg mx-3"></i>
-                        
-                          <i title='delete' onClick={ () => isDelete(category._id)} className="fa-solid fa-trash-can text-danger fa-lg"></i>
+                              <i title='Details View' onClick={ () => navigate(`/category/details/${category._id}`)} className="fa-solid fa-eye text-success fa-lg"></i>
+                            
+                              <i title='updated' onClick={ () => navigate(`/category/edit/${category._id}`)} className="fa-solid fa-file-pen text-warning fa-lg mx-3"></i>
+                            
+                              <i title='delete' onClick={ () => isDelete(category._id)} className="fa-solid fa-trash-can text-danger fa-lg"></i>
 
-                      </td>
-                  </tr>
-                  ) )
-                }
-                
-              </tbody>
-            </table>
-          </div>
+                          </td>
+                      </tr>
+                      ) )
+                    }
+                    
+                  </tbody>
+                </table>
+              </div>
+            )
+          }
+          
         </div>
       </div>
     </>

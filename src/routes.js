@@ -7,6 +7,10 @@ import CategoryAdded from './components/Category/CategoryAdded'
 import CategoryAll from './components/Category/CategoryAll'
 import CategoryEdit from './components/Category/CategoryEdit'
 import CategoryDetails from './components/Category/CategoryDetails'
+import AlbumAdded from './components/Album/AlbumAdded'
+import AlbumAll from './components/Album/AlbumAll'
+import AlbumEdit from './components/Album/AlbumEdit'
+import AlbumDetails from './components/Album/AlbumDetails'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
@@ -71,6 +75,13 @@ const routes = [
   { path: '/category/all', name: 'Category All', element: CategoryAll },
   { path: '/category/edit/:id', name: 'Category Edit', element: CategoryEdit },
   { path: '/category/details/:id', name: 'Details Data', element: CategoryDetails },
+  //album route
+  { path: '/album/add', name: 'Album Add', element: AlbumAdded },
+  { path: '/album/all', name: 'Album All', element: AlbumAll },
+  { path: '/album/edit/:id', name: 'Album Edit', element: AlbumEdit },
+  { path: '/album/details/:id', name: 'Details Data', element: AlbumDetails },
+
+
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
   { path: '/theme/typography', name: 'Typography', element: Typography },

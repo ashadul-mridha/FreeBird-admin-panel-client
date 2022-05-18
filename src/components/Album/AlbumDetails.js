@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const CategoryDetails = () => {
+const AlbumDetails = () => {
 
     const {id} = useParams();
     const [data , setData] = useState({});
@@ -10,7 +10,7 @@ const CategoryDetails = () => {
 
     useEffect( () => {
         setLoading(true)
-        axios.get(`http://localhost:5000/api/category/${id}`)
+        axios.get(`http://localhost:5000/api/album/${id}`)
         .then( res => {
             setData(res.data.data)
             setLoading(false)
@@ -31,10 +31,16 @@ const CategoryDetails = () => {
                             <div className="col-12">
                                 {/* tilte and subtitle feild  */}
                                 <div className="row my-3">
-                                    <div className="col-md-12">
+                                    <div className="col-md-6">
                                         <div className="form-group">
                                             <label htmlFor="title" className="form-label"> Name *</label>
-                                            <input type="text" disabled value={data.name} className="form-control" id="title" aria-describedby="titleHelp" placeholder="Enter title" />
+                                            <input type="text" disabled value={data?.name} className="form-control" id="title" aria-describedby="titleHelp" placeholder="Enter title" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label htmlFor="category" className="form-label"> Category *</label>
+                                            <input type="text" disabled value={data.cat_id} className="form-control" placeholder="Enter category" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
@@ -53,7 +59,7 @@ const CategoryDetails = () => {
                                 {/* description feild  */}
                                 <div className="row justify-content-center my-3">
                                     <div className="col-mb-6">
-                                        <div><img src={`http://localhost:5000/uploads/categoryimg/${data.image}`} alt="" width="400px" height="auto"  /></div>
+                                        <div><img src={`http://localhost:5000/uploads/albumimg/${data?.image}`} alt="" width="400px" height="auto"  /></div>
                                     </div>
                                     <div className="col-md-12">
                                         <div className="form-group">
@@ -71,4 +77,4 @@ const CategoryDetails = () => {
     );
 };
 
-export default CategoryDetails;
+export default AlbumDetails;
