@@ -87,6 +87,25 @@ const _nav = [
   },
   {
     component: CNavGroup,
+    name: 'Images',
+    icon: <CIcon icon={cilCaretBottom} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'All Images',
+        to: '/images/all',
+        icon: <CIcon icon={cilBorderAll} customClassName="nav-icon" />,
+      },
+      {
+        component: CNavItem,
+        name: 'Add Images',
+        to: '/images/add',
+        icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
     name: 'About Me',
     icon: <CIcon icon={cilCaretBottom} customClassName="nav-icon" />,
     items: [

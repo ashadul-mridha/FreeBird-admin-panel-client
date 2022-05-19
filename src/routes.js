@@ -21,6 +21,10 @@ import ClientAdded from './components/Clients/ClientAdded'
 import ClientAll from './components/Clients/ClientAll'
 import ClientEdit from './components/Clients/ClientEdit'
 import ClientDetails from './components/Clients/ClientDetails'
+import ImagesAll from './components/Images/ImagesAll'
+import ImageDetails from './components/Images/ImageDetails'
+import ImageAdded from './components/Images/ImageAdded'
+import ImageEdit from './components/Images/ImageEdit'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
@@ -103,6 +107,11 @@ const routes = [
   { path: '/clients/all', name: 'Clients All', element: ClientAll },
   { path: '/clients/edit/:id', name: 'Clients Edit', element: ClientEdit },
   { path: '/clients/details/:id', name: 'Details Data', element: ClientDetails },
+  //images route
+  { path: '/images/add', name: 'Images Add', element: ImageAdded },
+  { path: '/images/all', name: 'Images All', element: ImagesAll },
+  { path: '/images/edit/:id', name: 'Images Edit', element: ImageEdit },
+  { path: '/images/details/:id', name: 'Details Data', element: ImageDetails },
 
 
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
