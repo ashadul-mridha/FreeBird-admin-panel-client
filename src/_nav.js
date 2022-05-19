@@ -96,6 +96,19 @@ const _nav = [
     ],
   },
   {
+    component: CNavGroup,
+    name: 'Contact Us',
+    icon: <CIcon icon={cilCaretBottom} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'All Contact Data',
+        to: '/contact/all',
+        icon: <CIcon icon={cilBorderAll} customClassName="nav-icon" />,
+      },
+    ],
+  },
+  {
     component: CNavTitle,
     name: 'Theme',
   },
