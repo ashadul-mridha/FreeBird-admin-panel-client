@@ -97,6 +97,25 @@ const _nav = [
   },
   {
     component: CNavGroup,
+    name: 'About Me',
+    icon: <CIcon icon={cilCaretBottom} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'All About Me',
+        to: '/aboutme/all',
+        icon: <CIcon icon={cilBorderAll} customClassName="nav-icon" />,
+      },
+      {
+        component: CNavItem,
+        name: 'Add About Me',
+        to: '/aboutme/add',
+        icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
     name: 'Contact Us',
     icon: <CIcon icon={cilCaretBottom} customClassName="nav-icon" />,
     items: [

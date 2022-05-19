@@ -13,6 +13,10 @@ import AlbumEdit from './components/Album/AlbumEdit'
 import AlbumDetails from './components/Album/AlbumDetails'
 import ContactAll from './components/Contact/ContactAll'
 import ContactDetails from './components/Contact/ContactDetails'
+import AboutmeAdded from './components/AboutMe/AboutmeAdded'
+import AboutmeAll from './components/AboutMe/AboumeAll'
+import AboutmeEdit from './components/AboutMe/AboutmeEdit'
+import AboutmeDetails from './components/AboutMe/AboutmeDetails'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
@@ -85,6 +89,11 @@ const routes = [
   //contact us route
   { path: '/contact/all', name: 'Contact All', element: ContactAll },
   { path: '/contact/details/:id', name: 'Details Data', element: ContactDetails },
+  //aboutme route
+  { path: '/aboutme/add', name: 'About Me Add', element: AboutmeAdded },
+  { path: '/aboutme/all', name: 'About Me All', element: AboutmeAll },
+  { path: '/aboutme/edit/:id', name: 'About Me Edit', element: AboutmeEdit },
+  { path: '/aboutme/details/:id', name: 'Details Data', element: AboutmeDetails },
 
 
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
