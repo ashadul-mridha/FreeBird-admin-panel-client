@@ -17,6 +17,10 @@ import AboutmeAdded from './components/AboutMe/AboutmeAdded'
 import AboutmeAll from './components/AboutMe/AboumeAll'
 import AboutmeEdit from './components/AboutMe/AboutmeEdit'
 import AboutmeDetails from './components/AboutMe/AboutmeDetails'
+import ClientAdded from './components/Clients/ClientAdded'
+import ClientAll from './components/Clients/ClientAll'
+import ClientEdit from './components/Clients/ClientEdit'
+import ClientDetails from './components/Clients/ClientDetails'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
@@ -94,6 +98,11 @@ const routes = [
   { path: '/aboutme/all', name: 'About Me All', element: AboutmeAll },
   { path: '/aboutme/edit/:id', name: 'About Me Edit', element: AboutmeEdit },
   { path: '/aboutme/details/:id', name: 'Details Data', element: AboutmeDetails },
+  //clients route
+  { path: '/clients/add', name: 'Clients Add', element: ClientAdded },
+  { path: '/clients/all', name: 'Clients All', element: ClientAll },
+  { path: '/clients/edit/:id', name: 'Clients Edit', element: ClientEdit },
+  { path: '/clients/details/:id', name: 'Details Data', element: ClientDetails },
 
 
   { path: '/theme', name: 'Theme', element: Colors, exact: true },

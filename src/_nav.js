@@ -1,24 +1,14 @@
-import React from 'react'
-import CIcon from '@coreui/icons-react'
 import {
-  cilBell,
-  cilCalculator,
-  cilChartPie,
+  cilBell, cilBorderAll, cilCalculator, cilCaretBottom, cilChartPie,
   cilCursor,
-  cilDrop,
-  cilNotes,
-  cilPencil,
-  cilPuzzle,
+  cilDrop, cilHome, cilNotes,
+  cilPencil, cilPlus, cilPuzzle,
   cilSpeedometer,
-  cilStar,
-  cilHome,
-  cilPlus,
-  cilDelete,
-  cilCaretBottom,
-  cilBorderAll
+  cilStar
 } from '@coreui/icons'
+import CIcon from '@coreui/icons-react'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from 'react'
 
 const _nav = [
   {
@@ -124,6 +114,25 @@ const _nav = [
         name: 'All Contact Data',
         to: '/contact/all',
         icon: <CIcon icon={cilBorderAll} customClassName="nav-icon" />,
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'Clients',
+    icon: <CIcon icon={cilCaretBottom} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'All Clients',
+        to: '/clients/all',
+        icon: <CIcon icon={cilBorderAll} customClassName="nav-icon" />,
+      },
+      {
+        component: CNavItem,
+        name: 'Add Client',
+        to: '/clients/add',
+        icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
       },
     ],
   },
