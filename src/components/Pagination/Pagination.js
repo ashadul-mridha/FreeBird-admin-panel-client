@@ -10,8 +10,8 @@ const Pagination = ({ dataPerPage , totalData, paginate, currentPage }) => {
   return (
     <nav>
       <ul className='pagination'>
-            <li class={currentPage == 1 ? "page-item disabled" : "page-item"}>
-                <a class="page-link" onClick={() => paginate(currentPage - 1)} >Previous</a>
+            <li className={currentPage == 1 ? "page-item disabled" : "page-item"}>
+                <a className="page-link" onClick={() => paginate(currentPage - 1)} >Previous</a>
             </li>
                 {pageNumbers.map(number => (
                 <li key={number}  className={ currentPage === number ? 'page-item active' : 'page-item'}>
@@ -21,8 +21,8 @@ const Pagination = ({ dataPerPage , totalData, paginate, currentPage }) => {
                 </li>
                 ))}
                 
-            <li class={ pageNumbers[pageNumbers.length - 1] === currentPage ? "page-item disabled" : "page-item"}>
-                <a class="page-link" onClick={() => paginate(currentPage + 1)} >Next</a>
+            <li className={ pageNumbers[pageNumbers.length - 1] === currentPage ? "page-item disabled" : "page-item"}>
+                <a className="page-link" onClick={() => paginate(currentPage + 1)} >Next</a>
             </li>
       </ul>
     </nav>

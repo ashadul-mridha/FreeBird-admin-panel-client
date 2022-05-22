@@ -74,46 +74,34 @@ function ImagesAll() {
               </div>
             ) : (
               <div className="col">
-                <table className="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>Sl</th>
-                      <th>Caption</th>
-                      <th>Album Name</th>
-                      <th>Category Name</th>
-                      <th>Image</th>
-                      <th>Status</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      data.map( (image , index) => (
-                        <tr key={image._id}>
-                          <td>{index+1}</td>
-                          <td>{image.caption}</td>
-                          <td>{image.album_id?.name}</td>
-                          <td>{image.cat_id?.name}</td>
-                          <td>
-                            <img src={`http://localhost:5000/uploads/singleimg/${image.image}`} alt="" width="50px" height="auto" />
-                          </td>
-                          <td>{image.isActive}</td>
-                          <td>
+                <div className="row">
+                  {
+                    data.map( (image , index) => (
+                      <div className="col-md-4 col-sm-2">
+                        <div className="card" style={{ width : '18rem' , height: '500px'}}>
+                          <img src={`http://localhost:5000/uploads/singleimg/${image.image}`} className="card-img-top" alt="..." style={{height: '300px' , width: 'auto'}} />
+                          <div className="card-body">
+                            <h5 className="card-title text-center">Caption: {image.caption}</h5>
+                            <p className="card-text text-center">Album Name: {image.album_id?.name}</p>
+                            <p className="card-text text-center">Category Name: {image.cat_id?.name}</p>
+                            <div className='d-flex justify-content-center'>
 
-                              <i title='Details View' onClick={ () => navigate(`/images/details/${image._id}`)} className="fa-solid fa-eye text-success fa-lg"></i>
-                            
-                              <i title='updated' onClick={ () => navigate(`/images/edit/${image._id}`)} className="fa-solid fa-file-pen text-warning fa-lg mx-3"></i>
-                            
-                              <i title='delete' onClick={ () => isDelete(image._id)} className="fa-solid fa-trash-can text-danger fa-lg"></i>
+                              <button onClick={ () => navigate(`/images/details/${image._id}`)} className="btn btn-sm btn-warning" title='Details View'><i className="fa-solid fa-eye fa-lg"></i></button>
 
-                          </td>
-                      </tr>
-                      ) )
-                    }
-                    
-                  </tbody>
-                </table>
-                <div className="d-flex justify-content-center">
+                              <button title='updated' onClick={ () => navigate(`/images/edit/${image._id}`)} className="btn btn-sm btn-primary mx-3"><i className="fa-solid fa-file-pen fa-lg"></i></button>
+
+                              <button title='delete' onClick={ () => isDelete(image._id)} className="btn btn-sm btn-primary"> <i className="fa-solid fa-trash-can fa-lg"></i></button>
+
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  }
+
+                </div>
+
+                <div className="d-flex justify-content-center my-3">
                     <Pagination
                       dataPerPage={dataPerPage}
                       totalData={totalData}
