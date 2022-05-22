@@ -3,22 +3,30 @@ import styles from './style.module.css';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
+import Pagination from '../Pagination/Pagination';
 
 function ContactAll() {
 
   const [data , setData] = useState([]);
   const [loading , setLoading] = useState(false);
   const [effectDependancy , setEffectDependancy] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [dataPerPage] = useState(10);
+  const [totalData, setTotalData] = useState(1);
   let navigate = useNavigate();
   
   useEffect( () => {
       setLoading(true);
-      axios.get('http://localhost:5000/api/contactus/all')
+      axios.get(`http://localhost:5000/api/contactus/all?page=${currentPage}&size=${dataPerPage}`)
       .then( res => {
-        setData(res.data.data)
+        setData(res.data.data);
+        setTotalData(res.data.totalData);
         setLoading(false);
       })
-  } ,[effectDependancy])
+  } ,[effectDependancy,dataPerPage,currentPage])
+
+  // Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
 
   const isDelete = (id) => {
     Swal.fire({
@@ -99,6 +107,14 @@ function ContactAll() {
                     
                   </tbody>
                 </table>
+                <div className="d-flex justify-content-center">
+                    <Pagination
+                      dataPerPage={dataPerPage}
+                      totalData={totalData}
+                      paginate={paginate}
+                      currentPage={currentPage}
+                    />
+                </div>
               </div>
             )
           }
