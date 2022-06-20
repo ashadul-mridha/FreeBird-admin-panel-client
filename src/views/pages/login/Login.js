@@ -1,4 +1,5 @@
 import { cilLockLocked, cilUser } from '@coreui/icons'
+import Swal from 'sweetalert2';
 import CIcon from '@coreui/icons-react'
 import {
   CButton,
@@ -27,7 +28,6 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email,password);
 
     axios.post('http://localhost:5000/api/user/login', {
       "email" : email,
@@ -38,6 +38,13 @@ const Login = () => {
         setLogin(true);
         localStorage.setItem('loginUser', JSON.stringify(res.data.data))
         navigate("/")
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Authentication Failed!',
+          timer: 1500
+        })
       }
     })
     .catch( (err) => {
