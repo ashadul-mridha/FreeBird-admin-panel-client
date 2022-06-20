@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { cilLockLocked, cilUser } from '@coreui/icons'
+import CIcon from '@coreui/icons-react'
 import {
   CButton,
   CCard,
@@ -11,12 +11,39 @@ import {
   CFormInput,
   CInputGroup,
   CInputGroupText,
-  CRow,
+  CRow
 } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import { cilLockLocked, cilUser } from '@coreui/icons'
+import axios from 'axios'
+import { useState } from 'react'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 
 const Login = () => {
+
+  let navigate = useNavigate();
+  const [login , setLogin] = useState(false);
+  const [email , setEmail] = useState();
+  const [password , setPassword] = useState();
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(email,password);
+
+    axios.post('http://localhost:5000/api/user/login', {
+      "email" : email,
+      "password" : password
+    })
+    .then( res => {
+      if (res.data.status === true) {
+        setLogin(true);
+        localStorage.setItem('loginUser', JSON.stringify(res.data.data))
+        navigate("/")
+      }
+    })
+    .catch( (err) => {
+      console.log(err);
+    })
+  }
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
@@ -32,7 +59,7 @@ const Login = () => {
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="Username" autoComplete="username" />
+                      <CFormInput placeholder="email" onChange={ (e) => setEmail(e.target.value)} autoComplete="username" />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
@@ -41,18 +68,19 @@ const Login = () => {
                       <CFormInput
                         type="password"
                         placeholder="Password"
+                        onChange={ (e) => setPassword(e.target.value)}
                         autoComplete="current-password"
                       />
                     </CInputGroup>
                     <CRow>
                       <CCol xs={6}>
-                        <CButton color="primary" className="px-4">
+                        <CButton onClick={handleSubmit} color="primary" className="px-4">
                           Login
                         </CButton>
                       </CCol>
                       <CCol xs={6} className="text-right">
                         <CButton color="link" className="px-0">
-                          Forgot password?
+                          {/* Forgot password? */}
                         </CButton>
                       </CCol>
                     </CRow>
