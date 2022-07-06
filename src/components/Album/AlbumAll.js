@@ -92,21 +92,21 @@ function AlbumAll() {
                       data.map( (album , index) => (
                         <tr key={album._id}>
                           <td>{index+1}</td>
-                          <td>{album.name}</td>
-                          <td>{album.cat_id.name}</td>
-                          <td>{album.title}</td>
-                          <td>{album.subTitle}</td>
+                          <td>{album?.name}</td>
+                          <td>{album?.cat_id?.name}</td>
+                          <td>{album?.title}</td>
+                          <td>{album?.subTitle}</td>
                           <td>
-                            <img src={`http://localhost:5000/uploads/albumimg/${album.image}`} alt="" width="50px" height="auto" />
+                            <img src={`http://localhost:5000/uploads/albumimg/${album?.image}`} alt="" width="50px" height="auto" />
                           </td>
-                          <td>{album.isActive}</td>
+                          <td>{album?.isActive}</td>
                           <td>
 
-                              <i title='Details View' onClick={ () => navigate(`/album/details/${album._id}`)} className="fa-solid fa-eye text-success fa-lg"></i>
+                              <i title='Details View' onClick={ () => navigate(`/album/details/${album?._id}`)} className="fa-solid fa-eye text-success fa-lg"></i>
                             
-                              <i title='updated' onClick={ () => navigate(`/album/edit/${album._id}`)} className="fa-solid fa-file-pen text-warning fa-lg mx-3"></i>
+                              <i title='updated' onClick={ () => navigate(`/album/edit/${album?._id}`)} className="fa-solid fa-file-pen text-warning fa-lg mx-3"></i>
                             
-                              <i title='delete' onClick={ () => isDelete(album._id)} className="fa-solid fa-trash-can text-danger fa-lg"></i>
+                              <i title='delete' onClick={ () => isDelete(album?._id)} className="fa-solid fa-trash-can text-danger fa-lg"></i>
 
                           </td>
                       </tr>
